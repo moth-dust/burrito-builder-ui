@@ -14,13 +14,9 @@ function App() {
       ingredients
     }
     try {
-      const response = await postOrder(newOrder)
-      if(response.ok){
-        const postedOrder = await response.json()
-        console.log(postedOrder)
-        const newOrders = [...orders, postedOrder]
+      const postedOrder = await postOrder(newOrder)
+      const newOrders = [...orders, postedOrder]
       setOrders(newOrders)
-      }
     } catch (error) {
       console.error(error)
     }

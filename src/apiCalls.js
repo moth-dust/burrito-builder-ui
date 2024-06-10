@@ -20,7 +20,10 @@ async function postOrder(order){
       },
       body: JSON.stringify(order)
     });
-    return response
+    if(response.ok){
+    const data = await response.json()
+    return data
+    }
   } catch (error) {
     throw new Error(`Error posting: ${error}`)
   }
