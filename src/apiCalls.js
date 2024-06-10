@@ -5,7 +5,7 @@ async function getOrders(){
     const data = await response.json()
     return data
   } else {
-    throw new Error(`Error fetching`)
+    throw new Error(`Error fetching: ${response.status}`)
   }
   } catch (error){
     throw new Error(`Error fetching: ${error}`)
@@ -23,6 +23,8 @@ async function postOrder(order){
     if(response.ok){
     const data = await response.json()
     return data
+    } else {
+      throw new Error (`Error posting: ${response.status}`)
     }
   } catch (error) {
     throw new Error(`Error posting: ${error}`)
