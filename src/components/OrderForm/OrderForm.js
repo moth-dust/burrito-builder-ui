@@ -9,8 +9,12 @@ function OrderForm({newOrder}) {
     const newIngredients = [...ingredients, ingredient]
     setIngredients(newIngredients)
   }
+  
   function handleSubmit(e) {
     e.preventDefault();
+    if(!name || !ingredients[0]){
+      return
+    }
     newOrder(name, ingredients)
     clearInputs();
   }
@@ -34,6 +38,7 @@ function OrderForm({newOrder}) {
     "cilantro",
     "sour cream",
   ];
+
   const ingredientButtons = possibleIngredients.map((ingredient) => {
     return (
       <button
