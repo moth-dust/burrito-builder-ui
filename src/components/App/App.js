@@ -1,24 +1,27 @@
 import { useEffect, useState } from "react";
 import "./App.css";
-import { getOrders } from "../../apiCalls";
+import { getOrders, postOrder } from "../../apiCalls";
 import Orders from "../../components/Orders/Orders";
 import OrderForm from "../../components/OrderForm/OrderForm";
 
 function App() {
   const [orders, setOrders] = useState([])
+
   async function newOrder(name, ingredients){
     const newOrder = {
       id: orders.length + 1,
       name,
       ingredients
     }
-    console.log(newOrder)
     try {
-      
+      await postOrder(newOrder)
+      const newOrders = [...orders, newOrder]
+      setOrders(newOrders)
     } catch (error) {
-      
+      console.error(error)
     }
   }
+
   async function loadData(){
     try{
     const data = await getOrders();
@@ -27,6 +30,7 @@ function App() {
       console.error(error)
     }
   }
+
   useEffect(() => {
     loadData()
   },[]);
