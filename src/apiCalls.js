@@ -1,8 +1,12 @@
 async function getOrders(){
   try{
   const response =  await fetch("http://localhost:3001/api/v1/orders")
-  const data = await response.json()
-  return data
+  if(response.ok){
+    const data = await response.json()
+    return data
+  } else {
+    throw new Error(`Error fetching`)
+  }
   } catch (error){
     throw new Error(`Error fetching: ${error}`)
   }
