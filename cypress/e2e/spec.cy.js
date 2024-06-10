@@ -66,28 +66,6 @@ describe("Form Submission", () => {
     .next()
     .contains('beans')
   });
-  it("If I do not enter a name, my submission should not be successful",()=>{
-    cy.get('.ingredients-button')
-    .first()
-    .click()
-    .get('#submit-button')
-    .click()
-    .get('.order')
-    .last()
-    .find('h3')
-    .contains("TEST_2")
-  })
-  it("If I do not select any ingredients, my submission should not be successful",()=>{
-    cy.get('.ingredients-button')
-    cy.get('input')
-    .type("TEST_3")
-    .get('#submit-button')
-    .click()
-    .get('.order')
-    .last()
-    .find('h3')
-    .contains("TEST_2")
-  });
 });
 
 describe("Improper Form Submission", () => {
