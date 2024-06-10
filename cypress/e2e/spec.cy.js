@@ -96,9 +96,9 @@ describe("Improper Form Submission", () => {
       statusCode: 200, 
       fixture: 'orders.json'
     }).as('getData')
-    cy.visit("http://localhost:3000/");
+    cy.visit("http://localhost:3000/")
     cy.wait('@getData')
-  })
+  });
   it("If I do not enter a name, my submission should not be successful",()=>{
     cy.get('.ingredients-button')
     .first()
