@@ -11,7 +11,9 @@ describe("Page Load", () => {
   it("Loads", () => {
   });
   it("As a user if the page successfully loads, I should see all server side orders populated on the main page.", () => {
-    cy.get('.order')
+    cy.get('h1')
+    .contains('Burrito Builder')
+    .get('.order')
     .first()
     .find('h3')
     .contains('TEST_0')
