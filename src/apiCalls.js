@@ -7,5 +7,19 @@ async function getOrders(){
     throw new Error(`Error fetching: ${error}`)
   }
 }
+async function postOrder(order){
+  try {
+    const response = await fetch("http://localhost:3001/api/v1/orders",{
+      method: "POST",
+      headers:{
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(order)
+    });
+    return response
+  } catch (error) {
+    throw new Error(`Error posting: ${error}`)
+  }
+}
 
-export{getOrders}
+export{getOrders, postOrder}
