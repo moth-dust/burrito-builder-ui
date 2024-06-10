@@ -9,7 +9,7 @@ function OrderForm({newOrder}) {
     const newIngredients = [...ingredients, ingredient]
     setIngredients(newIngredients)
   }
-  
+
   function handleSubmit(e) {
     e.preventDefault();
     if(!name || !ingredients[0]){
@@ -42,6 +42,7 @@ function OrderForm({newOrder}) {
   const ingredientButtons = possibleIngredients.map((ingredient) => {
     return (
       <button
+        className="ingredients-button"
         key={ingredient}
         name={ingredient}
         value={ingredient}
@@ -66,7 +67,7 @@ function OrderForm({newOrder}) {
 
       <p>Order: {ingredients.join(", ") || "Nothing selected"}</p>
 
-      <button onClick={(e) => handleSubmit(e)}>Submit Order</button>
+      <button id="submit-button" onClick={(e) => handleSubmit(e)}>Submit Order</button>
     </form>
   );
 }
