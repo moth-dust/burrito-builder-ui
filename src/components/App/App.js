@@ -6,6 +6,19 @@ import OrderForm from "../../components/OrderForm/OrderForm";
 
 function App() {
   const [orders, setOrders] = useState([])
+  async function newOrder(name, ingredients){
+    const newOrder = {
+      id: orders.length + 1,
+      name,
+      ingredients
+    }
+    console.log(newOrder)
+    try {
+      
+    } catch (error) {
+      
+    }
+  }
   async function loadData(){
     try{
     const data = await getOrders();
@@ -22,7 +35,7 @@ function App() {
     <main className="App">
       <header>
         <h1>Burrito Builder</h1>
-        <OrderForm />
+        <OrderForm newOrder={newOrder}/>
       </header>
 
       <Orders orders={orders} />
